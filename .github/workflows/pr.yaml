@@ -1,0 +1,51 @@
+name: "Changelog + PR Validation"
+
+# 📌 This workflow handles both:
+# - Enforcing semantic PR titles (so changelogs are meaningful)
+# - Automatically generating changelog updates using release-please
+#
+# 🧠 Purpose:
+# We're using this to organize our commit history and changelog structure.
+# The goal is to clean up the mess and ensure we have a clear record of changes.
+#
+# 👀 Note for Andre:
+# This will let you (and others) track what’s changing in dev/sbx/prod easily via the generated changelog.
+
+on:
+  push:
+    branches:
+      - dev
+      - sbx
+      - prod
+  pull_request:
+    types: [opened, edited, reopened]
+
+jobs:
+  validate-pr-title:
+    if: github.event_name == 'pull_request'
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      # ✅ Enforces that PR titles follow conventional commits format (e.g., feat:, fix:, chore:)
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release-please:
+    # 🚀 Only runs on branch push (not PR events)
+    name: Update Changelog
+    needs: validate-pr-title
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      # 📦 Uses release-please to open a PR that updates CHANGELOG.md based on semantic commits
+      - uses: googleapis/release-please-action@v4
+        with:
+          release-type: simple # No versioning/tags, just changelog updates
+        #   skip-github-release: true # Don't create GitHub Releases
+        #   target-branch: dev
+        #   skip-github-pull-request: true
