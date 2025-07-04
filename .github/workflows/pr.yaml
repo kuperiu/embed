@@ -21,17 +21,6 @@ on:
     types: [opened, edited, reopened]
 
 jobs:
-  validate-pr-title:
-    name: Validate PR title
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: read
-    steps:
-      # ✅ Enforces that PR titles follow conventional commits format (e.g., feat:, fix:, chore:)
-      - uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   release-please:
     # 🚀 Only runs on branch push (not PR events)
     name: Update Changelog
