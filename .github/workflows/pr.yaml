@@ -14,9 +14,9 @@ name: "Changelog + PR Validation"
 on:
   push:
     branches:
-      - dev
-      - sbx
-      - prod
+      - development
+      - sandbox
+      - production
   pull_request:
     types: [opened, edited, reopened]
 
