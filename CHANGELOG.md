@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/kuperiu/embed/compare/v1.0.1...v1.0.2) (2025-07-04)
+
+
+### Bug Fixes
+
+* test ([#16](https://github.com/kuperiu/embed/issues/16)) ([60b9354](https://github.com/kuperiu/embed/commit/60b9354b146ff316419802d586d19be7a9447183))
+
 ## [1.0.1](https://github.com/kuperiu/embed/compare/v1.0.0...v1.0.1) (2025-07-04)
 
 
