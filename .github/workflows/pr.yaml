@@ -24,7 +24,6 @@ jobs:
   release-please:
     # 🚀 Only runs on branch push (not PR events)
     name: Update Changelog
-    needs: validate-pr-title
     runs-on: ubuntu-latest
     permissions:
       contents: write
