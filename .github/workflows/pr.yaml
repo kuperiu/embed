@@ -33,6 +33,7 @@ jobs:
       - uses: googleapis/release-please-action@v4
         with:
           release-type: simple # No versioning/tags, just changelog updates
+          target-branch: ${{ github.ref_name }}
         #   skip-github-release: true # Don't create GitHub Releases
         #   target-branch: dev
         #   skip-github-pull-request: true
