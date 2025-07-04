@@ -13,12 +13,7 @@ name: "Changelog + PR Validation"
 
 on:
   push:
-    branches:
-      - development
-      - sandbox
-      - production
-  pull_request:
-    types: [opened, edited, reopened]
+
 
 jobs:
   release-please:
