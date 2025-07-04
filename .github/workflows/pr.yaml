@@ -28,6 +28,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      issues: write
     steps:
       # 📦 Uses release-please to open a PR that updates CHANGELOG.md based on semantic commits
       - uses: googleapis/release-please-action@v4
