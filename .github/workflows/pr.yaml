@@ -13,6 +13,11 @@ name: "Changelog + PR Validation"
 
 on:
   push:
+    branches:
+      - development
+      - sandbox
+      - production
+  pull_request:
 
 
 jobs:
@@ -29,7 +34,6 @@ jobs:
         with:
           target-branch: ${{ github.event.pull_request.base.ref }}
           release-type: simple
-           # No versioning/tags, just changelog updates
         #   skip-github-release: true # Don't create GitHub Releases
         #   target-branch: dev
         #   skip-github-pull-request: true
