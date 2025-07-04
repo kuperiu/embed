@@ -32,7 +32,7 @@ jobs:
       # 📦 Uses release-please to open a PR that updates CHANGELOG.md based on semantic commits
       - uses: googleapis/release-please-action@v4
         with:
-          target-branch: ${{ github.ref_name }}
+          target-branch: ${{ github.event.pull_request.base.ref }}
           release-type: simple
            # No versioning/tags, just changelog updates
         #   skip-github-release: true # Don't create GitHub Releases
